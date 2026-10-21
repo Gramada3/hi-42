@@ -1,0 +1,13 @@
+{
+  "domain": "hidroelectrica_personal",
+  "name": "Hidroelectrica (personal)",
+  "codeowners": [],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://ihidro.ro",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "loggers": ["custom_components.hidroelectrica_personal"],
+  "requirements": [],
+  "version": "1.0.0"
+}

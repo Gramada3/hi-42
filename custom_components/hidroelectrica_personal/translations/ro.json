@@ -1,0 +1,196 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Cont iHidro",
+        "description": "Datele cu care te autentifici în aplicația iHidro / ihidro.ro.",
+        "data": {
+          "username": "Email",
+          "password": "Parolă"
+        }
+      },
+      "accounts": {
+        "title": "Locuri de consum",
+        "description": "Am găsit {count} locuri de consum. Alege ce vrei să urmărești.",
+        "data": {
+          "selected_accounts": "Locuri de consum",
+          "update_interval": "Interval de actualizare",
+          "history_days": "Istoric facturi și plăți"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reautentificare iHidro",
+        "description": "Parola pentru {username} nu mai este acceptată. Introdu parola nouă.",
+        "data": {
+          "password": "Parolă"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Email sau parolă greșită.",
+      "cannot_connect": "Nu mă pot conecta la serverul iHidro.",
+      "no_accounts": "Autentificare reușită, dar contul nu are locuri de consum.",
+      "no_account_selected": "Alege cel puțin un loc de consum.",
+      "unknown": "Eroare neașteptată."
+    },
+    "abort": {
+      "already_configured": "Contul este deja configurat.",
+      "reauth_successful": "Reautentificare reușită."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Setări Hidroelectrica",
+        "data": {
+          "selected_accounts": "Locuri de consum",
+          "update_interval": "Interval de actualizare",
+          "history_days": "Istoric facturi și plăți"
+        }
+      }
+    },
+    "error": {
+      "no_account_selected": "Alege cel puțin un loc de consum."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "balance": {
+        "name": "Sold"
+      },
+      "due_date": {
+        "name": "Scadență"
+      },
+      "last_invoice": {
+        "name": "Ultima factură"
+      },
+      "consumption_index": {
+        "name": "Index consum"
+      },
+      "last_reading_date": {
+        "name": "Data ultimei citiri"
+      },
+      "production_index": {
+        "name": "Index producție"
+      },
+      "window_start": {
+        "name": "Autocitire de la"
+      },
+      "window_end": {
+        "name": "Autocitire până la"
+      },
+      "last_month_consumption": {
+        "name": "Consum ultima lună"
+      },
+      "last_month_cost": {
+        "name": "Cost ultima lună"
+      },
+      "year_consumption": {
+        "name": "Consum anual"
+      },
+      "last_payment": {
+        "name": "Ultima plată"
+      },
+      "year_payments": {
+        "name": "Plăți anul curent"
+      },
+      "year_compensations": {
+        "name": "Compensații prosumator anul curent"
+      },
+      "contract": {
+        "name": "Loc de consum (POD)"
+      }
+    },
+    "binary_sensor": {
+      "balance_due": {
+        "name": "Sold de plată"
+      },
+      "overdue": {
+        "name": "Factură restantă"
+      },
+      "reading_window": {
+        "name": "Fereastră autocitire"
+      },
+      "prosumer": {
+        "name": "Prosumator"
+      }
+    },
+    "number": {
+      "reading_to_submit": {
+        "name": "Index de trimis"
+      }
+    },
+    "button": {
+      "submit_reading": {
+        "name": "Trimite indexul"
+      },
+      "refresh": {
+        "name": "Actualizează datele"
+      }
+    }
+  },
+  "services": {
+    "submit_reading": {
+      "name": "Trimite autocitirea",
+      "description": "Trimite indexul contorului la Hidroelectrica (doar cât timp fereastra de autocitire este deschisă).",
+      "fields": {
+        "account": {
+          "name": "Cod încasare",
+          "description": "Codul de încasare (UAN). Opțional dacă ai un singur loc de consum."
+        },
+        "device_id": {
+          "name": "Dispozitiv",
+          "description": "Alternativ, dispozitivul locului de consum."
+        },
+        "index": {
+          "name": "Index",
+          "description": "Indexul citit de pe contor (număr întreg)."
+        },
+        "readings": {
+          "name": "Indecși pe registre",
+          "description": "Pentru contoare cu mai multe registre: registru → index."
+        },
+        "validate_only": {
+          "name": "Doar validare",
+          "description": "Verifică indexul la Hidroelectrica fără să-l trimită."
+        }
+      }
+    },
+    "refresh": {
+      "name": "Actualizează",
+      "description": "Reîncarcă datele de la Hidroelectrica.",
+      "fields": {
+        "account": {
+          "name": "Cod încasare",
+          "description": "Opțional; implicit toate locurile de consum."
+        },
+        "device_id": {
+          "name": "Dispozitiv",
+          "description": "Alternativ, dispozitivul locului de consum."
+        },
+        "full": {
+          "name": "Complet",
+          "description": "Include și istoricul (consum, facturi, plăți, citiri)."
+        }
+      }
+    },
+    "get_data": {
+      "name": "Obține date",
+      "description": "Returnează datele complete (facturi, plăți, consum, citiri) pentru automatizări și scripturi.",
+      "fields": {
+        "account": {
+          "name": "Cod încasare",
+          "description": "Opțional; implicit toate locurile de consum."
+        },
+        "device_id": {
+          "name": "Dispozitiv",
+          "description": "Alternativ, dispozitivul locului de consum."
+        },
+        "sections": {
+          "name": "Secțiuni",
+          "description": "Ce date să returneze; implicit toate."
+        }
+      }
+    }
+  }
+}

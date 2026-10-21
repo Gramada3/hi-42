@@ -1,0 +1,64 @@
+submit_reading:
+  fields:
+    account:
+      example: "8000123456"
+      selector:
+        text:
+    device_id:
+      selector:
+        device:
+          integration: hidroelectrica_personal
+    index:
+      example: 12345
+      selector:
+        number:
+          min: 0
+          max: 99999999
+          step: 1
+          mode: box
+          unit_of_measurement: kWh
+    readings:
+      example: '{"001": 12345}'
+      selector:
+        object:
+    validate_only:
+      default: false
+      selector:
+        boolean:
+refresh:
+  fields:
+    account:
+      selector:
+        text:
+    device_id:
+      selector:
+        device:
+          integration: hidroelectrica_personal
+    full:
+      default: true
+      selector:
+        boolean:
+get_data:
+  fields:
+    account:
+      selector:
+        text:
+    device_id:
+      selector:
+        device:
+          integration: hidroelectrica_personal
+    sections:
+      selector:
+        select:
+          multiple: true
+          options:
+            - bill
+            - window
+            - pod
+            - meter
+            - reads
+            - usage
+            - invoices
+            - payments
+            - previous_reads
+            - counter_series

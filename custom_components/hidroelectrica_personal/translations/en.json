@@ -1,0 +1,196 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "iHidro account",
+        "description": "The credentials you use in the iHidro app / ihidro.ro.",
+        "data": {
+          "username": "Email",
+          "password": "Password"
+        }
+      },
+      "accounts": {
+        "title": "Consumption points",
+        "description": "Found {count} consumption points. Choose which ones to track.",
+        "data": {
+          "selected_accounts": "Consumption points",
+          "update_interval": "Update interval",
+          "history_days": "Invoice and payment history"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate iHidro",
+        "description": "The password for {username} is no longer accepted. Enter the new password.",
+        "data": {
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Wrong email or password.",
+      "cannot_connect": "Cannot connect to the iHidro server.",
+      "no_accounts": "Login succeeded, but the account has no consumption points.",
+      "no_account_selected": "Select at least one consumption point.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This account is already configured.",
+      "reauth_successful": "Re-authentication successful."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Hidroelectrica settings",
+        "data": {
+          "selected_accounts": "Consumption points",
+          "update_interval": "Update interval",
+          "history_days": "Invoice and payment history"
+        }
+      }
+    },
+    "error": {
+      "no_account_selected": "Select at least one consumption point."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "balance": {
+        "name": "Balance"
+      },
+      "due_date": {
+        "name": "Due date"
+      },
+      "last_invoice": {
+        "name": "Last invoice"
+      },
+      "consumption_index": {
+        "name": "Consumption index"
+      },
+      "last_reading_date": {
+        "name": "Last reading date"
+      },
+      "production_index": {
+        "name": "Production index"
+      },
+      "window_start": {
+        "name": "Self-reading from"
+      },
+      "window_end": {
+        "name": "Self-reading until"
+      },
+      "last_month_consumption": {
+        "name": "Last month consumption"
+      },
+      "last_month_cost": {
+        "name": "Last month cost"
+      },
+      "year_consumption": {
+        "name": "Yearly consumption"
+      },
+      "last_payment": {
+        "name": "Last payment"
+      },
+      "year_payments": {
+        "name": "Payments this year"
+      },
+      "year_compensations": {
+        "name": "Prosumer compensations this year"
+      },
+      "contract": {
+        "name": "Consumption point (POD)"
+      }
+    },
+    "binary_sensor": {
+      "balance_due": {
+        "name": "Balance due"
+      },
+      "overdue": {
+        "name": "Overdue invoice"
+      },
+      "reading_window": {
+        "name": "Self-reading window"
+      },
+      "prosumer": {
+        "name": "Prosumer"
+      }
+    },
+    "number": {
+      "reading_to_submit": {
+        "name": "Reading to submit"
+      }
+    },
+    "button": {
+      "submit_reading": {
+        "name": "Submit reading"
+      },
+      "refresh": {
+        "name": "Refresh data"
+      }
+    }
+  },
+  "services": {
+    "submit_reading": {
+      "name": "Submit meter reading",
+      "description": "Submits the meter reading to Hidroelectrica (only while the self-reading window is open).",
+      "fields": {
+        "account": {
+          "name": "Account code",
+          "description": "Utility account number (UAN). Optional if you have a single consumption point."
+        },
+        "device_id": {
+          "name": "Device",
+          "description": "Alternatively, the consumption point device."
+        },
+        "index": {
+          "name": "Reading",
+          "description": "Meter reading (whole number)."
+        },
+        "readings": {
+          "name": "Per-register readings",
+          "description": "For multi-register meters: register → reading."
+        },
+        "validate_only": {
+          "name": "Validate only",
+          "description": "Check the reading with Hidroelectrica without submitting it."
+        }
+      }
+    },
+    "refresh": {
+      "name": "Refresh",
+      "description": "Reloads data from Hidroelectrica.",
+      "fields": {
+        "account": {
+          "name": "Account code",
+          "description": "Optional; defaults to all consumption points."
+        },
+        "device_id": {
+          "name": "Device",
+          "description": "Alternatively, the consumption point device."
+        },
+        "full": {
+          "name": "Full",
+          "description": "Also reload history (usage, invoices, payments, readings)."
+        }
+      }
+    },
+    "get_data": {
+      "name": "Get data",
+      "description": "Returns full data (invoices, payments, usage, readings) for automations and scripts.",
+      "fields": {
+        "account": {
+          "name": "Account code",
+          "description": "Optional; defaults to all consumption points."
+        },
+        "device_id": {
+          "name": "Device",
+          "description": "Alternatively, the consumption point device."
+        },
+        "sections": {
+          "name": "Sections",
+          "description": "Which data to return; defaults to all."
+        }
+      }
+    }
+  }
+}
